@@ -17,12 +17,17 @@ public class Main {
 			System.out.println("PROJETO - CORRE FORREST CORRE");
 			System.out.println("============================================");
 			System.out.println("1. Realizar Inscrição.");
+			System.out.println("2. Editar Inscrição.");
 			System.out.println("0.  Sair.");
 			opcao = scan.nextInt();
 			
 			if(opcao == 1) {
 				InscricaoCorredor inscricao = new InscricaoCorredor();
 				inscricoes.adicionar(inscricao);
+			}
+			
+			if(opcao == 2) {
+				inscricoes.editar();
 			}
 			
 		}while(opcao != 0); {

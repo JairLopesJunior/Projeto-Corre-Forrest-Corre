@@ -14,9 +14,10 @@ public class InscricoesCorredores {
 		
 	List<InscricaoCorredor> inscricoes = new ArrayList<>();
 	
+	// Opção 1 - Realizar Inscrição
 	public void adicionar(InscricaoCorredor inscricao) {	
 		
-		Integer i = 0;
+		Integer i = 1;
 		System.out.println("Informe seu nome: ");
 		String nome = scan.next();
 		inscricao.setNome(nome);
@@ -41,7 +42,7 @@ public class InscricoesCorredores {
 		inscricoes.add(inscricao);
 		
 		obterLinha();
-		System.out.println("Inscrição efetuada com sucesso!!");
+		System.out.println("Inscrição efetuada com sucesso, o numero da inscrição é: " + i);
 		obterLinha();
 	}
 	
@@ -60,6 +61,30 @@ public class InscricoesCorredores {
 			provaEscolhida == 3 ? OpcaoProva.Corrida_5K :
 			provaEscolhida == 4 ? OpcaoProva.Corrida_10K :
 			OpcaoProva.Corrida_21K;
+	}
+	
+	// Opção 2 - Editar Inscrição
+	public void editar() {
+		System.out.println("Informe o numero da Inscrição: ");
+		Integer numero = scan.nextInt();
+		InscricaoCorredor inscricaoValidada = validarInscricao(numero);
+		if(inscricaoValidada != null) {
+			System.out.println("Editado");
+		}else {
+			obterLinha();
+			System.out.println("Numero de inscrição incorreto, por favor informe corretamente!!");
+			obterLinha();
+		}
+	}
+	
+	// Validar se as inscriçoes existem
+	private InscricaoCorredor validarInscricao(Integer numero) {
+		for(InscricaoCorredor i : inscricoes) {
+			if(i.getNumeroInscricao() == numero) {
+				return i;
+			}
+		}
+		return null;
 	}
 	
 	public void obterLinha() {

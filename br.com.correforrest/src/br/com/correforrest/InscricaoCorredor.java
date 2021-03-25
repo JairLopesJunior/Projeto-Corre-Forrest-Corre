@@ -46,6 +46,9 @@ public class InscricaoCorredor {
 	public void setNumeroInscricao(Integer numeroInscricao) {
 		this.numeroInscricao = numeroInscricao;
 	}
+	public Integer getNumeroInscricao() {
+		return numeroInscricao;
+	}
 	
 	
 }
