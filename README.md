@@ -32,6 +32,7 @@ As camisetas
 requisitos 1 e 2, e somente os que pagarem a inscrição, crie uma função que mostre o número de camisetas
 necessárias por tamanho. (2 pontos)
 Exemplo de saída da função:
+
 P:
 M:
 G:
