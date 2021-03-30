@@ -18,6 +18,7 @@ public class Main {
 			System.out.println("============================================");
 			System.out.println("1. Realizar Inscrição.");
 			System.out.println("2. Editar Inscrição.");
+			System.out.println("3. Gravar os dados dos corredores.");
 			System.out.println("0.  Sair.");
 			opcao = scan.nextInt();
 			
@@ -28,6 +29,10 @@ public class Main {
 			
 			if(opcao == 2) {
 				inscricoes.editar();
+			}
+			
+			if(opcao == 3) {
+				inscricoes.gravar();
 			}
 			
 		}while(opcao != 0); {

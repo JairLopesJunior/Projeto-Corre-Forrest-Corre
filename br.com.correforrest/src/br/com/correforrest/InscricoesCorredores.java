@@ -1,5 +1,6 @@
 package br.com.correforrest;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -77,6 +78,31 @@ public class InscricoesCorredores {
 			obterLinha();
 			System.out.println("Numero de inscrição incorreto, por favor informe corretamente!!");
 			obterLinha();
+		}
+	}
+	
+	// Gravar dados dos Corredores
+	public void gravar() {
+		try {
+			File arquivoKids = new File("kids.txt");
+			File arquivoCaminhada = new File("caminhada5k.txt");
+			File arquivoC5k = new File("corrida5k.txt");
+			File arquivoC10k = new File("corrida10k.txt");
+			File arquivoC21k = new File("corrida21k.txt");
+			
+			if(!arquivoKids.exists() || !arquivoCaminhada.exists() || !arquivoC5k.exists() || !arquivoC10k.exists() || !arquivoC21k.exists()) {
+				arquivoKids.createNewFile();
+				arquivoCaminhada.createNewFile();
+				arquivoC5k.createNewFile();
+				arquivoC10k.createNewFile();
+				arquivoC21k.createNewFile();
+			}
+			
+			if(inscricoes) {
+				
+			}
+		}catch(Exception e) {
+			System.out.println(e.getStackTrace());
 		}
 	}
 	
