@@ -1,6 +1,9 @@
 package br.com.correforrest;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -14,11 +17,16 @@ public class InscricoesCorredores {
 	Scanner scan = new Scanner(System.in);
 		
 	List<InscricaoCorredor> inscricoes = new ArrayList<>();
+	List<InscricaoCorredor> kids = new ArrayList<>();
+	List<InscricaoCorredor> caminhada = new ArrayList<>();
+	List<InscricaoCorredor> corrida5k = new ArrayList<>();
+	List<InscricaoCorredor> corrida10k = new ArrayList<>();
+	List<InscricaoCorredor> corrida21k = new ArrayList<>();
 	
 	// Opção 1 - Realizar Inscrição
 	public void adicionar(InscricaoCorredor inscricao) {	
 		
-		Integer i = 1;
+		Integer i = 0;
 		System.out.println("Informe seu nome: ");
 		String nome = scan.next();
 		inscricao.setNome(nome);
@@ -26,8 +34,8 @@ public class InscricoesCorredores {
 		System.out.println("Informe seu CPF: ");
 		String cpf = scan.next();
 		inscricao.setCpf(cpf);
-
-		inscricao.setNumeroInscricao(i++);
+		i++;
+		inscricao.setNumeroInscricao(i);
 		System.out.println("Informe o numero da Camiseta: Ex: 1. P, 2. M, 3. G, 4. GG, 5. XG e 6. XGG.");
 		Integer camiseta = scan.nextInt();
 		NumeroCamiseta camisetaEscolhida = whatCamiseta(camiseta);
@@ -90,6 +98,13 @@ public class InscricoesCorredores {
 			File arquivoC10k = new File("corrida10k.txt");
 			File arquivoC21k = new File("corrida21k.txt");
 			
+			if(inscricoes.isEmpty()) {
+				obterLinha();
+				System.out.println("Dados inexistentes para gravar!!");
+				obterLinha();
+				return;
+			}
+			
 			if(!arquivoKids.exists() || !arquivoCaminhada.exists() || !arquivoC5k.exists() || !arquivoC10k.exists() || !arquivoC21k.exists()) {
 				arquivoKids.createNewFile();
 				arquivoCaminhada.createNewFile();
@@ -97,13 +112,137 @@ public class InscricoesCorredores {
 				arquivoC10k.createNewFile();
 				arquivoC21k.createNewFile();
 			}
-			
-			if(inscricoes) {
-				
+
+			for(InscricaoCorredor iC : inscricoes) {
+				if(iC.getOpcao().equals(OpcaoProva.Kids)) {
+					kids.add(iC);
+				}else if(iC.getOpcao().equals(OpcaoProva.Caminhada_5K)) {
+					caminhada.add(iC);
+				}else if(iC.getOpcao().equals(OpcaoProva.Corrida_5K)) {
+					corrida5k.add(iC);
+				}else if(iC.getOpcao().equals(OpcaoProva.Corrida_10K)) {
+					corrida10k.add(iC);
+				}else {
+					corrida21k.add(iC);
+				}
 			}
+				
+				if(!kids.isEmpty()) {
+					var bf = getArquivo(arquivoKids);
+					for(InscricaoCorredor i : kids) {
+						bf.write("==========================================");
+						bf.newLine();
+						bf.write("Nome: " + i.getNome());
+						bf.newLine();
+						bf.write("CPF: " + i.getCpf());
+						bf.newLine();
+						bf.write("Numero da Inscrição: " + i.getNumeroInscricao());
+						bf.newLine();
+						bf.write("Numero da Camisa: " + i.getNumeroCamiseta());
+						bf.newLine();
+						bf.write("Prova: " + i.getOpcao());
+						bf.newLine();
+					}
+					bf.close();
+					getMessage("kids.txt");
+				}
+				
+				if(!caminhada.isEmpty()) {
+					var bf = getArquivo(arquivoCaminhada);
+					for(InscricaoCorredor i : caminhada) {
+						bf.write("==========================================");
+						bf.newLine();
+						bf.write("Nome: " + i.getNome());
+						bf.newLine();
+						bf.write("CPF: " + i.getCpf());
+						bf.newLine();
+						bf.write("Numero da Inscrição: " + i.getNumeroInscricao());
+						bf.newLine();
+						bf.write("Numero da Camisa: " + i.getNumeroCamiseta());
+						bf.newLine();
+						bf.write("Prova: " + i.getOpcao());
+						bf.newLine();
+					}
+					bf.close();
+					getMessage("caminhada5k.txt");
+				}
+				
+				if(!corrida5k.isEmpty()) {
+					var bf = getArquivo(arquivoC5k);
+					for(InscricaoCorredor i : corrida5k) {
+						bf.write("==========================================");
+						bf.newLine();
+						bf.write("Nome: " + i.getNome());
+						bf.newLine();
+						bf.write("CPF: " + i.getCpf());
+						bf.newLine();
+						bf.write("Numero da Inscrição: " + i.getNumeroInscricao());
+						bf.newLine();
+						bf.write("Numero da Camisa: " + i.getNumeroCamiseta());
+						bf.newLine();
+						bf.write("Prova: " + i.getOpcao());
+						bf.newLine();
+					}
+					bf.close();
+					getMessage("corrida5k.txt");
+				}
+
+				if(!corrida10k.isEmpty()) {
+					var bf = getArquivo(arquivoC10k);
+					for(InscricaoCorredor i : corrida10k) {
+						bf.write("==========================================");
+						bf.newLine();
+						bf.write("Nome: " + i.getNome());
+						bf.newLine();
+						bf.write("CPF: " + i.getCpf());
+						bf.newLine();
+						bf.write("Numero da Inscrição: " + i.getNumeroInscricao());
+						bf.newLine();
+						bf.write("Numero da Camisa: " + i.getNumeroCamiseta());
+						bf.newLine();
+						bf.write("Prova: " + i.getOpcao());
+						bf.newLine();
+					}
+					bf.close();
+					getMessage("corrida10k.txt");
+				}
+
+				if(!corrida21k.isEmpty()){
+					var bf = getArquivo(arquivoC21k);
+					for(InscricaoCorredor i : corrida21k) {
+						bf.write("==========================================");
+						bf.newLine();
+						bf.write("Nome: " + i.getNome());
+						bf.newLine();
+						bf.write("CPF: " + i.getCpf());
+						bf.newLine();
+						bf.write("Numero da Inscrição: " + i.getNumeroInscricao());
+						bf.newLine();
+						bf.write("Numero da Camisa: " + i.getNumeroCamiseta());
+						bf.newLine();
+						bf.write("Prova: " + i.getOpcao());
+						bf.newLine();
+					}
+					bf.close();
+					getMessage("corrida21k.txt");
+				}
+				
 		}catch(Exception e) {
 			System.out.println(e.getStackTrace());
 		}
+	}
+	
+	private BufferedWriter getArquivo(File arquivoKids) throws IOException {
+		FileWriter fw = new FileWriter(arquivoKids.getAbsoluteFile());
+		BufferedWriter bf = new BufferedWriter(fw);
+		return bf;
+	}
+	
+	private void getMessage(String str) {
+		System.out.println("============================================================");
+		System.out.printf("Arquivo %s criado/gravado com sucesso!!", str);
+		System.out.println();
+		System.out.println("============================================================");
 	}
 	
 	// Validar se as inscriçoes existem
