@@ -1,7 +1,9 @@
 package br.com.correforrest;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -92,6 +94,7 @@ public class InscricoesCorredores {
 	// Gravar dados dos Corredores
 	public void gravar() {
 		try {
+			
 			File arquivoKids = new File("kids.txt");
 			File arquivoCaminhada = new File("caminhada5k.txt");
 			File arquivoC5k = new File("corrida5k.txt");
@@ -236,6 +239,72 @@ public class InscricoesCorredores {
 		FileWriter fw = new FileWriter(arquivoKids.getAbsoluteFile());
 		BufferedWriter bf = new BufferedWriter(fw);
 		return bf;
+	}
+	
+	public void ler(){
+		try {
+			File arquivoKids = new File("kids.txt");
+			File arquivoCaminhada = new File("caminhada5k.txt");
+			File arquivoC5k = new File("corrida5k.txt");
+			File arquivoC10k = new File("corrida10k.txt");
+			File arquivoC21k = new File("corrida21k.txt");
+			
+			if(!arquivoKids.exists() || !arquivoCaminhada.exists() || !arquivoC5k.exists() || !arquivoC10k.exists() || !arquivoC21k.exists()) {
+				arquivoKids.createNewFile();
+				arquivoCaminhada.createNewFile();
+				arquivoC5k.createNewFile();
+				arquivoC10k.createNewFile();
+				arquivoC21k.createNewFile();
+			}
+			
+			FileReader percorrerArquivo1 = new FileReader(arquivoKids);
+			FileReader percorrerArquivo2 = new FileReader(arquivoCaminhada);
+			FileReader percorrerArquivo3 = new FileReader(arquivoC5k);
+			FileReader percorrerArquivo4 = new FileReader(arquivoC10k);
+			FileReader percorrerArquivo5 = new FileReader(arquivoC21k);
+			BufferedReader lerArquivo1 = new BufferedReader(percorrerArquivo1);
+			BufferedReader lerArquivo2 = new BufferedReader(percorrerArquivo2);
+			BufferedReader lerArquivo3 = new BufferedReader(percorrerArquivo3);
+			BufferedReader lerArquivo4 = new BufferedReader(percorrerArquivo4);
+			BufferedReader lerArquivo5 = new BufferedReader(percorrerArquivo5);
+			
+			System.out.println("==========================================");
+			System.out.println("LISTA DE CORREDORES ENCONTRADOS");
+			
+			while(lerArquivo1.ready()) {
+				String linha = lerArquivo1.readLine();
+				System.out.println(linha);
+			 }  
+			
+			while(lerArquivo2.ready()) {
+				String linha = lerArquivo2.readLine();
+				System.out.println(linha);
+			 }  
+			
+			while(lerArquivo3.ready()) {
+				String linha = lerArquivo3.readLine();
+				System.out.println(linha);
+			 }  
+			
+			while(lerArquivo4.ready()) {
+				String linha = lerArquivo4.readLine();
+				System.out.println(linha);
+			 }  
+			
+			while(lerArquivo5.ready()) {
+				String linha = lerArquivo5.readLine();
+				System.out.println(linha);
+			 }  
+			
+			 lerArquivo1.close();
+			 lerArquivo2.close();
+			 lerArquivo3.close();
+			 lerArquivo4.close();
+			 lerArquivo5.close();
+			 
+		}catch(Exception e) {
+			System.out.println(e.fillInStackTrace());
+		}
 	}
 	
 	private void getMessage(String str) {

@@ -5,7 +5,19 @@ Numero da Inscrição: 1
 Numero da Camisa: P
 Prova: Kids
 ==========================================
-Nome: joao
+Nome: jair
+CPF: 1
+Numero da Inscrição: 1
+Numero da Camisa: P
+Prova: Kids
+==========================================
+Nome: jair
+CPF: 1
+Numero da Inscrição: 1
+Numero da Camisa: P
+Prova: Kids
+==========================================
+Nome: jair
 CPF: 1
 Numero da Inscrição: 1
 Numero da Camisa: P

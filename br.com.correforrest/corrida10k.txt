@@ -1,6 +1,0 @@
-==========================================
-Nome: kika
-CPF: 5
-Numero da Inscrição: 1
-Numero da Camisa: GG
-Prova: Corrida_10K

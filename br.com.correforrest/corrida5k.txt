@@ -1,6 +1,0 @@
-==========================================
-Nome: joana
-CPF: 3
-Numero da Inscrição: 1
-Numero da Camisa: G
-Prova: Corrida_5K
