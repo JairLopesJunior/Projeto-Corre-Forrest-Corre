@@ -131,7 +131,7 @@ public class InscricoesCorredores {
 			}
 				
 				if(!kids.isEmpty()) {
-					var bf = getArquivo(arquivoKids);
+					BufferedWriter bf = getArquivo(arquivoKids);
 					for(InscricaoCorredor i : kids) {
 						bf.write("==========================================");
 						bf.newLine();
@@ -151,7 +151,7 @@ public class InscricoesCorredores {
 				}
 				
 				if(!caminhada.isEmpty()) {
-					var bf = getArquivo(arquivoCaminhada);
+					BufferedWriter bf = getArquivo(arquivoCaminhada);
 					for(InscricaoCorredor i : caminhada) {
 						bf.write("==========================================");
 						bf.newLine();
@@ -171,7 +171,7 @@ public class InscricoesCorredores {
 				}
 				
 				if(!corrida5k.isEmpty()) {
-					var bf = getArquivo(arquivoC5k);
+					BufferedWriter bf = getArquivo(arquivoC5k);
 					for(InscricaoCorredor i : corrida5k) {
 						bf.write("==========================================");
 						bf.newLine();
@@ -191,7 +191,7 @@ public class InscricoesCorredores {
 				}
 
 				if(!corrida10k.isEmpty()) {
-					var bf = getArquivo(arquivoC10k);
+					BufferedWriter bf = getArquivo(arquivoC10k);
 					for(InscricaoCorredor i : corrida10k) {
 						bf.write("==========================================");
 						bf.newLine();
@@ -211,7 +211,7 @@ public class InscricoesCorredores {
 				}
 
 				if(!corrida21k.isEmpty()){
-					var bf = getArquivo(arquivoC21k);
+					BufferedWriter bf = getArquivo(arquivoC21k);
 					for(InscricaoCorredor i : corrida21k) {
 						bf.write("==========================================");
 						bf.newLine();
@@ -304,6 +304,23 @@ public class InscricoesCorredores {
 			 
 		}catch(Exception e) {
 			System.out.println(e.fillInStackTrace());
+		}
+	}
+	
+	// 5. Pagar Inscrição
+	public void makePayment() {
+		System.out.println("Informe o numero da Inscrição:");
+		Integer numero = scan.nextInt();
+		InscricaoCorredor inscricaoValidada = validarInscricao(numero);
+		if(inscricaoValidada != null) {
+			inscricaoValidada.setSituacaoInscricao(SituacaoInscricao.EFETIVADA);
+			obterLinha();
+			System.out.println("Pagamento realizado com sucesso!!");
+			obterLinha();
+		}else {
+			obterLinha();
+			System.out.println("Numero de inscrição Inválido, por favor informe novamente!!");
+			obterLinha();
 		}
 	}
 	

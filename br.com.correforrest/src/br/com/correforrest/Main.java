@@ -1,5 +1,6 @@
 package br.com.correforrest;
 
+import java.io.File;
 import java.util.Scanner;
 
 public class Main {
@@ -20,6 +21,7 @@ public class Main {
 			System.out.println("2. Editar Inscrição.");
 			System.out.println("3. Gravar os dados dos corredores.");
 			System.out.println("4. Ler os dados dos corredores.");
+			System.out.println("5. Pagar inscrição.");
 			System.out.println("0.  Sair.");
 			opcao = scan.nextInt();
 			
@@ -40,8 +42,23 @@ public class Main {
 				inscricoes.ler();
 			}
 			
-		}while(opcao != 0); {
+			if(opcao == 5) {
+				inscricoes.makePayment();
+			}
 			
+		}while(opcao != 0); {
+			File arquivoKids = new File("kids.txt");
+			File arquivoCaminhada = new File("caminhada5k.txt");
+			File arquivoC5k = new File("corrida5k.txt");
+			File arquivoC10k = new File("corrida10k.txt");
+			File arquivoC21k = new File("corrida21k.txt");
+			
+			// Apagando
+			arquivoKids.delete();
+			arquivoCaminhada.delete();
+			arquivoC5k.delete();
+			arquivoC10k.delete();
+			arquivoC21k.delete();
 		}
 
 	}
