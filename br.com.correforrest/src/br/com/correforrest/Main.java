@@ -22,6 +22,7 @@ public class Main {
 			System.out.println("3. Gravar os dados dos corredores.");
 			System.out.println("4. Ler os dados dos corredores.");
 			System.out.println("5. Pagar inscrição.");
+			System.out.println("6. Listar os Candidatos Pagantes.");
 			System.out.println("0.  Sair.");
 			opcao = scan.nextInt();
 			
@@ -44,6 +45,10 @@ public class Main {
 			
 			if(opcao == 5) {
 				inscricoes.makePayment();
+			}
+			
+			if(opcao == 6) {
+				inscricoes.listPayers();
 			}
 			
 		}while(opcao != 0); {

@@ -24,11 +24,11 @@ public class InscricoesCorredores {
 	List<InscricaoCorredor> corrida5k = new ArrayList<>();
 	List<InscricaoCorredor> corrida10k = new ArrayList<>();
 	List<InscricaoCorredor> corrida21k = new ArrayList<>();
+	Integer i = 0;
 	
 	// Opção 1 - Realizar Inscrição
 	public void adicionar(InscricaoCorredor inscricao) {	
 		
-		Integer i = 0;
 		System.out.println("Informe seu nome: ");
 		String nome = scan.next();
 		inscricao.setNome(nome);
@@ -36,7 +36,7 @@ public class InscricoesCorredores {
 		System.out.println("Informe seu CPF: ");
 		String cpf = scan.next();
 		inscricao.setCpf(cpf);
-		i++;
+		++i;
 		inscricao.setNumeroInscricao(i);
 		System.out.println("Informe o numero da Camiseta: Ex: 1. P, 2. M, 3. G, 4. GG, 5. XG e 6. XGG.");
 		Integer camiseta = scan.nextInt();
@@ -322,6 +322,66 @@ public class InscricoesCorredores {
 			System.out.println("Numero de inscrição Inválido, por favor informe novamente!!");
 			obterLinha();
 		}
+	}
+	
+	// 6. Listar Candidatos Pagantes
+	public void listPayers() {
+		obterLinha();
+		System.out.println("Lista de Candidatos com a inscrição efetivada.");
+		obterLinha();
+		
+		if(inscricoes.isEmpty() && kids.isEmpty() && caminhada.isEmpty() && corrida5k.isEmpty() && corrida10k.isEmpty() && corrida21k.isEmpty()) {
+			System.out.println("Nenhum Candidato encontrado efetivado!!");
+			return;
+		}
+		
+		inscricoes.forEach(f -> {
+			if(f.getSituacaoInscricao().equals(SituacaoInscricao.EFETIVADA)){
+				System.out.println("Nome: " + f.getNome());
+				System.out.println("Numero da Inscrição: " + f.getNumeroInscricao());
+				obterLinha();
+			}
+		});
+		
+		kids.forEach(f -> {
+			if(f.getSituacaoInscricao().equals(SituacaoInscricao.EFETIVADA)){
+				System.out.println("Nome: " + f.getNome());
+				System.out.println("Numero da Inscrição: " + f.getNumeroInscricao());
+				obterLinha();
+			}
+		});
+		
+		caminhada.forEach(f -> {
+			if(f.getSituacaoInscricao().equals(SituacaoInscricao.EFETIVADA)){
+				System.out.println("Nome: " + f.getNome());
+				System.out.println("Numero da Inscrição: " + f.getNumeroInscricao());
+				obterLinha();
+			}
+		});
+		
+		corrida5k.forEach(f -> {
+			if(f.getSituacaoInscricao().equals(SituacaoInscricao.EFETIVADA)){
+				System.out.println("Nome: " + f.getNome());
+				System.out.println("Numero da Inscrição: " + f.getNumeroInscricao());
+				obterLinha();
+			}
+		});
+		
+		corrida10k.forEach(f -> {
+			if(f.getSituacaoInscricao().equals(SituacaoInscricao.EFETIVADA)){
+				System.out.println("Nome: " + f.getNome());
+				System.out.println("Numero da Inscrição: " + f.getNumeroInscricao());
+				obterLinha();
+			}
+		});
+		
+		corrida21k.forEach(f -> {
+			if(f.getSituacaoInscricao().equals(SituacaoInscricao.EFETIVADA)){
+				System.out.println("Nome: " + f.getNome());
+				System.out.println("Numero da Inscrição: " + f.getNumeroInscricao());
+				obterLinha();
+			}
+		});
 	}
 	
 	private void getMessage(String str) {
